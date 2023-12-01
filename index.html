@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>간단한 텍스트 게임</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    #story {
+      margin: 20px 0;
+    }
+
+    #choices {
+      display: flex;
+      justify-content: center;
+    }
+
+    button {
+      margin: 0 10px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>모험의 시작</h1>
+  <p id="story">당신은 어느 날, 모험을 떠나기로 결심했습니다. 어떤 길을 선택하시겠습니까?</p>
+
+  <div id="choices">
+    <button onclick="makeChoice(1)">왼쪽 길로 간다</button>
+    <button onclick="makeChoice(2)">오른쪽 길로 간다</button>
+  </div>
+
+  <script>
+    function makeChoice(choice) {
+      var storyElement = document.getElementById("story");
+      var choicesElement = document.getElementById("choices");
+
+      if (choice === 1) {
+        storyElement.innerHTML = "왼쪽 길을 선택했습니다. 무엇을 발견하게 될까요?";
+        choicesElement.innerHTML = '<button onclick="makeChoice(3)">더 가본다</button>';
+      } else if (choice === 2) {
+        storyElement.innerHTML = "오른쪽 길을 선택했습니다. 무엇을 만날지 기대가 됩니다.";
+        choicesElement.innerHTML = '<button onclick="makeChoice(4)">계속 간다</button>';
+      } else if (choice === 3) {
+        storyElement.innerHTML = "더 갔더니 마법의 숲을 발견했습니다. 당신은 어떻게 할까요?";
+        choicesElement.innerHTML = '<button onclick="makeChoice(5)">마법의 숲을 탐험한다</button>';
+      } else if (choice === 4) {
+        storyElement.innerHTML = "계속 가다가 큰 강을 만났습니다. 어떻게 건널까요?";
+        choicesElement.innerHTML = '<button onclick="makeChoice(6)">다리를 찾아 강을 건넌다</button>';
+      } else if (choice === 5) {
+        storyElement.innerHTML = "마법의 숲에서 마법사를 만났습니다. 마법사는 당신에게 마법 구슬을 선물했습니다. 모험이 끝났습니다!";
+        choicesElement.innerHTML = '';
+      } else if (choice === 6) {
+        storyElement.innerHTML = "다리를 찾아 강을 건너는 도중, 늑대에게 습격당했습니다. 모험이 실패했습니다!";
+        choicesElement.innerHTML = '';
+      }
+    }
+  </script>
+
+</body>
+</html>
